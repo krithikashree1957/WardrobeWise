@@ -1,0 +1,252 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>WardrobeWise - Login</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-surface": "#2f3131",
+                        "on-error": "#ffffff",
+                        "tertiary": "#555f6f",
+                        "surface-container-highest": "#e2e2e2",
+                        "secondary-container": "#bae6fd",
+                        "outline": "#7a7583",
+                        "on-primary-fixed": "#21005e",
+                        "surface-variant": "#e2e2e2",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed-dim": "#cebdff",
+                        "secondary-fixed-dim": "#a1cde3",
+                        "error-container": "#ffdad6",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed-variant": "#3d4756",
+                        "on-tertiary-container": "#2b3543",
+                        "tertiary-fixed-dim": "#bdc7d9",
+                        "on-surface-variant": "#494552",
+                        "on-primary-fixed-variant": "#4f319c",
+                        "on-background": "#1a1c1c",
+                        "primary-fixed": "#e8ddff",
+                        "surface-bright": "#f9f9f9",
+                        "secondary": "#396477",
+                        "surface-container-low": "#f3f3f4",
+                        "on-secondary-fixed-variant": "#1e4c5f",
+                        "inverse-on-surface": "#f0f1f1",
+                        "tertiary-fixed": "#d9e3f6",
+                        "surface": "#f9f9f9",
+                        "on-primary-container": "#3c1989",
+                        "tertiary-container": "#939daf",
+                        "primary": "#674bb5",
+                        "on-surface": "#1a1c1c",
+                        "surface-container": "#eeeeee",
+                        "background": "#f9f9f9",
+                        "on-secondary-fixed": "#001f2a",
+                        "secondary-fixed": "#bee9ff",
+                        "surface-dim": "#dadada",
+                        "error": "#ba1a1a",
+                        "inverse-primary": "#cebdff",
+                        "on-tertiary-fixed": "#121c2a",
+                        "on-error-container": "#93000a",
+                        "primary-container": "#a78bfa",
+                        "surface-tint": "#674bb5",
+                        "outline-variant": "#cac4d4",
+                        "on-tertiary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "surface-container-high": "#e8e8e8",
+                        "on-secondary-container": "#3d687c"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-md": "16px",
+                        "stack-lg": "32px",
+                        "unit": "8px",
+                        "gutter": "24px",
+                        "container-padding-desktop": "40px",
+                        "container-padding-mobile": "20px",
+                        "stack-sm": "8px"
+                    },
+                    "fontFamily": {
+                        "title-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "title-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-surface {
+            backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.04);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .lavender-gradient {
+            background: linear-gradient(135deg, #a78bfa 0%, #674bb5 100%);
+        }
+        .button-glow:hover {
+            box-shadow: 0 0 20px rgba(103, 75, 181, 0.3);
+        }
+        body {
+            background: radial-gradient(circle at top left, #f3f0ff, #ffffff), radial-gradient(circle at bottom right, #e0f2fe, #ffffff);
+            min-height: 100vh;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-lg text-on-surface antialiased flex flex-col min-h-screen">
+<!-- Hero Section / Background Elements -->
+<div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
+<div class="absolute top-[-10%] right-[-5%] w-[400px] h-[400px] bg-primary/10 rounded-full blur-[100px]"></div>
+<div class="absolute bottom-[-10%] left-[-5%] w-[500px] h-[500px] bg-secondary/10 rounded-full blur-[120px]"></div>
+</div>
+<!-- Main Content -->
+<main class="relative z-10 flex-grow flex items-center justify-center px-container-padding-mobile md:px-container-padding-desktop py-stack-lg">
+<div class="w-full max-w-[480px]">
+<!-- Brand Identity -->
+<div class="text-center mb-stack-lg">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-primary tracking-tight mb-stack-sm">WardrobeWise</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-[320px] mx-auto">Your AI-powered high-fashion personal stylist and wardrobe manager.</p>
+</div>
+<!-- Login Card -->
+<div class="glass-surface rounded-lg p-gutter md:p-stack-lg animate-in fade-in slide-in-from-bottom-4 duration-700">
+<form class="space-y-stack-md" id="loginForm">
+<!-- Email Input -->
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant block ml-2" for="email">Email Address</label>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant group-focus-within:text-primary transition-colors">mail</span>
+<input class="w-full pl-12 pr-4 py-4 rounded-xl border-outline-variant bg-white/50 focus:bg-white focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all outline-none" id="email" name="email" placeholder="name@example.com" required="" type="email">
+</div>
+</div>
+<!-- Password Input -->
+<div class="space-y-2">
+<div class="flex justify-between items-center ml-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant" for="password">Password</label>
+<a class="font-label-caps text-label-caps text-primary hover:underline transition-all" href="#">Forgot Password?</a>
+</div>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant group-focus-within:text-primary transition-colors">lock</span>
+<input class="w-full pl-12 pr-12 py-4 rounded-xl border-outline-variant bg-white/50 focus:bg-white focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all outline-none" id="password" name="password" placeholder="••••••••" required="" type="password">
+<button class="absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</div>
+</div>
+<!-- Login Button -->
+<button class="w-full lavender-gradient text-on-primary font-title-md text-title-md py-4 rounded-xl shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 button-glow mt-stack-md" type="submit">
+                        Login
+                    </button>
+</form>
+<!-- Divider -->
+<div class="relative my-stack-lg">
+<div class="absolute inset-0 flex items-center">
+<span class="w-full border-t border-outline-variant"></span>
+</div>
+<div class="relative flex justify-center text-xs uppercase">
+<span class="bg-surface-bright px-4 text-on-surface-variant font-label-caps text-label-caps">Or continue with</span>
+</div>
+</div>
+<!-- Google Login -->
+<button class="w-full flex items-center justify-center gap-3 bg-white border border-outline-variant py-3 rounded-xl hover:bg-surface-container transition-colors duration-200 active:scale-95" type="button">
+<svg class="w-5 h-5" viewBox="0 0 24 24">
+<path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
+<path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path>
+<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"></path>
+<path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"></path>
+</svg>
+<span class="font-body-lg text-body-lg font-semibold">Sign in with Google</span>
+</button>
+<!-- Footer Links -->
+<div class="mt-stack-lg text-center">
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                        Don't have an account? 
+                        <a class="text-primary font-bold hover:underline transition-all" href="#">Create Account</a>
+</p>
+</div>
+</div>
+<!-- Additional Links -->
+<div class="mt-stack-lg flex flex-wrap justify-center gap-stack-md px-4">
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors" href="#">Help Center</a>
+</div>
+</div>
+</main>
+<!-- Side Visual (Hidden on mobile) -->
+<div class="hidden lg:block fixed right-gutter top-1/2 -translate-y-1/2 w-[380px] h-[600px] z-0">
+<div class="glass-surface w-full h-full rounded-lg overflow-hidden flex flex-col p-stack-md rotate-3 translate-x-12 opacity-80 scale-95 blur-[1px]">
+<div class="w-full aspect-[3/4] rounded-lg mb-stack-md" data-alt="A high-fashion editorial portrait of a model wearing minimalist, sustainable luxury clothing. The lighting is soft and studio-quality, creating a high-end light-mode aesthetic with pastel violet and cream tones. The composition is elegant, capturing the texture and drape of the fabric in a minimalist, boutique showroom setting." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAMppVgGxujTc7RJCZI2v4vlfUuJrSvVUSKDgmqVIRhQm2re0fWVYOAujlEcRNyEWJ0Fx19l0w_j1OdT6z9q99HwQH0bRRX10u4vrlGd0dmITO3W4fbDg1-t4ZvI_vEV-SVKp9T0919TVdXERd-R55VCkztN9nV9Det6F-JViTVGKK0SBQKgV0bb_fTboA0bvU-zMENxu5fGlICBji-4M3lVJM5L3ixYIEscdE-euPj-QSbQSzG9niwP40EUcXsDVgQGtPPzLIyo7M')"></div>
+<div class="space-y-stack-sm px-2">
+<div class="h-4 w-3/4 bg-primary/20 rounded-full"></div>
+<div class="h-4 w-1/2 bg-on-surface-variant/10 rounded-full"></div>
+</div>
+</div>
+</div>
+<script>
+        // Simple Interaction logic
+        document.getElementById('loginForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalText = btn.innerHTML;
+            btn.disabled = true;
+            btn.innerHTML = '<span class="material-symbols-outlined animate-spin">progress_activity</span>';
+            
+            setTimeout(() => {
+                btn.innerHTML = 'Success!';
+                btn.classList.replace('lavender-gradient', 'bg-green-500');
+                setTimeout(() => {
+                    alert('Login Simulation Complete');
+                    btn.disabled = false;
+                    btn.innerHTML = originalText;
+                    btn.classList.replace('bg-green-500', 'lavender-gradient');
+                }, 1000);
+            }, 1500);
+        });
+
+        // Floating Micro-interactions
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('focus', () => {
+                input.parentElement.classList.add('scale-[1.01]');
+            });
+            input.addEventListener('blur', () => {
+                input.parentElement.classList.remove('scale-[1.01]');
+            });
+        });
+    </script>
+</body></html>

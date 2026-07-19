@@ -1,0 +1,335 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>WardrobeWise | Complete Your Style Profile</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-surface": "#2f3131",
+                    "on-error": "#ffffff",
+                    "tertiary": "#555f6f",
+                    "surface-container-highest": "#e2e2e2",
+                    "secondary-container": "#bae6fd",
+                    "outline": "#7a7583",
+                    "on-primary-fixed": "#21005e",
+                    "surface-variant": "#e2e2e2",
+                    "on-secondary": "#ffffff",
+                    "primary-fixed-dim": "#cebdff",
+                    "secondary-fixed-dim": "#a1cde3",
+                    "error-container": "#ffdad6",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-fixed-variant": "#3d4756",
+                    "on-tertiary-container": "#2b3543",
+                    "tertiary-fixed-dim": "#bdc7d9",
+                    "on-surface-variant": "#494552",
+                    "on-primary-fixed-variant": "#4f319c",
+                    "on-background": "#1a1c1c",
+                    "primary-fixed": "#e8ddff",
+                    "surface-bright": "#f9f9f9",
+                    "secondary": "#396477",
+                    "surface-container-low": "#f3f3f4",
+                    "on-secondary-fixed-variant": "#1e4c5f",
+                    "inverse-on-surface": "#f0f1f1",
+                    "tertiary-fixed": "#d9e3f6",
+                    "surface": "#f9f9f9",
+                    "on-primary-container": "#3c1989",
+                    "tertiary-container": "#939daf",
+                    "primary": "#674bb5",
+                    "on-surface": "#1a1c1c",
+                    "surface-container": "#eeeeee",
+                    "background": "#f9f9f9",
+                    "on-secondary-fixed": "#001f2a",
+                    "secondary-fixed": "#bee9ff",
+                    "surface-dim": "#dadada",
+                    "error": "#ba1a1a",
+                    "inverse-primary": "#cebdff",
+                    "on-tertiary-fixed": "#121c2a",
+                    "on-error-container": "#93000a",
+                    "primary-container": "#a78bfa",
+                    "surface-tint": "#674bb5",
+                    "outline-variant": "#cac4d4",
+                    "on-tertiary": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "surface-container-high": "#e8e8e8",
+                    "on-secondary-container": "#3d687c"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-md": "16px",
+                    "stack-lg": "32px",
+                    "unit": "8px",
+                    "gutter": "24px",
+                    "container-padding-desktop": "40px",
+                    "container-padding-mobile": "20px",
+                    "stack-sm": "8px"
+            },
+            "fontFamily": {
+                    "title-md": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-caps": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "headline-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "title-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9f9f9;
+            color: #1a1c1c;
+            overflow-x: hidden;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.04);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .step-transition {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .bg-mesh {
+            background-image: radial-gradient(at 0% 0%, rgba(103, 75, 181, 0.05) 0px, transparent 50%),
+                              radial-gradient(at 100% 0%, rgba(186, 230, 253, 0.1) 0px, transparent 50%),
+                              radial-gradient(at 100% 100%, rgba(232, 221, 255, 0.1) 0px, transparent 50%),
+                              radial-gradient(at 0% 100%, rgba(103, 75, 181, 0.05) 0px, transparent 50%);
+        }
+        /* Custom radio styling for body shape */
+        .shape-radio:checked + label {
+            border-color: #674bb5;
+            background-color: rgba(103, 75, 181, 0.05);
+            transform: scale(1.05);
+        }
+        .style-chip:checked + label {
+            background-color: #674bb5;
+            color: white;
+            border-color: #674bb5;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-mesh min-h-screen flex flex-col items-center">
+<!-- Top Navigation Placeholder (Suppressed logic applies, but we use a slim brand bar) -->
+<header class="fixed top-0 w-full z-50 backdrop-blur-xl border-b border-white/20 bg-surface/10 flex items-center justify-center h-[64px]">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary tracking-tight">WardrobeWise</h1>
+</header>
+<main class="w-full max-w-2xl px-container-padding-mobile md:px-container-padding-desktop pt-24 pb-32">
+<div class="mb-stack-lg text-center">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-2">Tell us about your style.</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">We'll use these details to create your bespoke AI closet.</p>
+</div>
+<form class="space-y-stack-lg" id="registrationForm">
+<!-- Section 1: Identity & Physicals -->
+<section class="glass-panel p-gutter rounded-lg space-y-gutter">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div class="space-y-unit">
+<label class="font-label-caps text-label-caps text-outline uppercase">Full Name</label>
+<input class="w-full bg-surface-container-low border-none rounded-DEFAULT focus:ring-2 focus:ring-primary h-12 px-4 font-body-lg" placeholder="John Doe" type="text">
+</div>
+<div class="space-y-unit">
+<label class="font-label-caps text-label-caps text-outline uppercase">Age</label>
+<input class="w-full bg-surface-container-low border-none rounded-DEFAULT focus:ring-2 focus:ring-primary h-12 px-4 font-body-lg" placeholder="25" type="number">
+</div>
+</div>
+<div class="space-y-unit">
+<label class="font-label-caps text-label-caps text-outline uppercase">Gender</label>
+<div class="flex gap-stack-sm">
+<button class="flex-1 h-12 rounded-DEFAULT bg-surface-container-low font-title-md text-on-surface border border-transparent hover:border-primary-container transition-colors" type="button">Men</button>
+<button class="flex-1 h-12 rounded-DEFAULT bg-surface-container-low font-title-md text-on-surface border border-transparent hover:border-primary-container transition-colors" type="button">Women</button>
+<button class="flex-1 h-12 rounded-DEFAULT bg-surface-container-low font-title-md text-on-surface border border-transparent hover:border-primary-container transition-colors" type="button">Non-binary</button>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-gutter">
+<div class="space-y-unit">
+<label class="font-label-caps text-label-caps text-outline uppercase">Height (cm)</label>
+<input class="w-full bg-surface-container-low border-none rounded-DEFAULT focus:ring-2 focus:ring-primary h-12 px-4 font-body-lg" placeholder="180" type="number">
+</div>
+<div class="space-y-unit">
+<label class="font-label-caps text-label-caps text-outline uppercase">Weight (kg)</label>
+<input class="w-full bg-surface-container-low border-none rounded-DEFAULT focus:ring-2 focus:ring-primary h-12 px-4 font-body-lg" placeholder="75" type="number">
+</div>
+</div>
+</section>
+<!-- Section 2: Body Shape & Skin Tone -->
+<section class="glass-panel p-gutter rounded-lg space-y-gutter">
+<div class="space-y-stack-md">
+<label class="font-label-caps text-label-caps text-outline uppercase">Body Shape</label>
+<div class="grid grid-cols-4 gap-stack-sm">
+<div>
+<input class="hidden shape-radio" id="shape1" name="body_shape" type="radio">
+<label class="flex flex-col items-center p-stack-sm border border-outline-variant rounded-DEFAULT transition-all cursor-pointer hover:bg-surface-container-low" for="shape1">
+<span class="material-symbols-outlined text-[32px] text-primary" data-icon="accessibility_new">accessibility_new</span>
+<span class="font-label-caps text-[10px] mt-1">Athletic</span>
+</label>
+</div>
+<div>
+<input class="hidden shape-radio" id="shape2" name="body_shape" type="radio">
+<label class="flex flex-col items-center p-stack-sm border border-outline-variant rounded-DEFAULT transition-all cursor-pointer hover:bg-surface-container-low" for="shape2">
+<span class="material-symbols-outlined text-[32px] text-primary" data-icon="man">man</span>
+<span class="font-label-caps text-[10px] mt-1">Rectangular</span>
+</label>
+</div>
+<div>
+<input class="hidden shape-radio" id="shape3" name="body_shape" type="radio">
+<label class="flex flex-col items-center p-stack-sm border border-outline-variant rounded-DEFAULT transition-all cursor-pointer hover:bg-surface-container-low" for="shape3">
+<span class="material-symbols-outlined text-[32px] text-primary" data-icon="stat_3">stat_3</span>
+<span class="font-label-caps text-[10px] mt-1">Inverted Triangle</span>
+</label>
+</div>
+<div>
+<input class="hidden shape-radio" id="shape4" name="body_shape" type="radio">
+<label class="flex flex-col items-center p-stack-sm border border-outline-variant rounded-DEFAULT transition-all cursor-pointer hover:bg-surface-container-low" for="shape4">
+<span class="material-symbols-outlined text-[32px] text-primary" data-icon="circle">circle</span>
+<span class="font-label-caps text-[10px] mt-1">Oval</span>
+</label>
+</div>
+</div>
+</div>
+<div class="space-y-stack-md">
+<label class="font-label-caps text-label-caps text-outline uppercase">Skin Tone</label>
+<div class="flex flex-wrap gap-stack-sm">
+<button class="w-10 h-10 rounded-full border-2 border-white ring-1 ring-outline-variant bg-[#F9EBD3] hover:scale-110 transition-transform" type="button"></button>
+<button class="w-10 h-10 rounded-full border-2 border-white ring-1 ring-outline-variant bg-[#EFD1B1] hover:scale-110 transition-transform" type="button"></button>
+<button class="w-10 h-10 rounded-full border-2 border-white ring-1 ring-outline-variant bg-[#D2A578] hover:scale-110 transition-transform" type="button"></button>
+<button class="w-10 h-10 rounded-full border-2 border-white ring-1 ring-outline-variant bg-[#9B6A45] hover:scale-110 transition-transform" type="button"></button>
+<button class="w-10 h-10 rounded-full border-2 border-white ring-1 ring-outline-variant bg-[#5F3E2F] hover:scale-110 transition-transform" type="button"></button>
+<button class="w-10 h-10 rounded-full border-2 border-white ring-1 ring-outline-variant bg-[#2D1F1A] hover:scale-110 transition-transform" type="button"></button>
+</div>
+</div>
+</section>
+<!-- Section 3: Fashion Style -->
+<section class="glass-panel p-gutter rounded-lg space-y-gutter">
+<div class="space-y-stack-md">
+<label class="font-label-caps text-label-caps text-outline uppercase">Preferred Fashion Style</label>
+<div class="flex flex-wrap gap-stack-sm">
+<input class="hidden style-chip" id="style_min" type="checkbox">
+<label class="px-4 py-2 rounded-full border border-outline-variant bg-white/50 text-body-sm font-medium cursor-pointer transition-all hover:bg-surface-container-high" for="style_min">Minimal</label>
+<input class="hidden style-chip" id="style_street" type="checkbox">
+<label class="px-4 py-2 rounded-full border border-outline-variant bg-white/50 text-body-sm font-medium cursor-pointer transition-all hover:bg-surface-container-high" for="style_street">Streetwear</label>
+<input class="hidden style-chip" id="style_chic" type="checkbox">
+<label class="px-4 py-2 rounded-full border border-outline-variant bg-white/50 text-body-sm font-medium cursor-pointer transition-all hover:bg-surface-container-high" for="style_chic">Chic</label>
+<input class="hidden style-chip" id="style_avant" type="checkbox">
+<label class="px-4 py-2 rounded-full border border-outline-variant bg-white/50 text-body-sm font-medium cursor-pointer transition-all hover:bg-surface-container-high" for="style_avant">Avant Garde</label>
+<input class="hidden style-chip" id="style_retro" type="checkbox">
+<label class="px-4 py-2 rounded-full border border-outline-variant bg-white/50 text-body-sm font-medium cursor-pointer transition-all hover:bg-surface-container-high" for="style_retro">Retro</label>
+<input class="hidden style-chip" id="style_business" type="checkbox">
+<label class="px-4 py-2 rounded-full border border-outline-variant bg-white/50 text-body-sm font-medium cursor-pointer transition-all hover:bg-surface-container-high" for="style_business">Business</label>
+</div>
+</div>
+</section>
+<!-- Section 4: Location -->
+<section class="glass-panel p-gutter rounded-lg space-y-gutter overflow-hidden relative">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter relative z-10">
+<div class="space-y-unit">
+<label class="font-label-caps text-label-caps text-outline uppercase">Country</label>
+<select class="w-full bg-white/60 border-none rounded-DEFAULT focus:ring-2 focus:ring-primary h-12 px-4 font-body-lg appearance-none">
+<option>United States</option>
+<option>United Kingdom</option>
+<option>France</option>
+<option>Japan</option>
+<option>South Korea</option>
+</select>
+</div>
+<div class="space-y-unit">
+<label class="font-label-caps text-label-caps text-outline uppercase">City</label>
+<input class="w-full bg-white/60 border-none rounded-DEFAULT focus:ring-2 focus:ring-primary h-12 px-4 font-body-lg" placeholder="New York" type="text">
+</div>
+</div>
+<!-- Subtle Map Background Effect -->
+<div class="absolute inset-0 opacity-10 pointer-events-none grayscale" data-alt="A highly detailed minimalist vector map of a metropolitan city grid, featuring clean lines and subtle geometric shapes. The map is presented in a light-mode aesthetic with soft grey tones and lavender accents. The overall mood is sophisticated and modern, reflecting high-end UI design principles." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAuYpifDPn92ayoMitP_cxNg7qKItRuMCTyQSYVuAPfesyzPmHOXzpVF4YKFpxvivl4GHuwMrTxklflLIgEyrg4jOlw84QOOQbHP_1keXo20XQ9jfbGV8x-f9rCQ6nStXwf1Wf_-H6VgMrZYKUpXHIA0OMgD15CZe5z53J5ecuWQoDRBgV__VGJrYN7CQgSLDLorzb-3Jpi18FhWD43zWLsjWjQGfZKK_AMr8RsXPKQEmQ84kGO0ulLGtDy3rUClOp31Rqy6v94h_0')"></div>
+</section>
+<!-- Complete Profile Button -->
+<div class="pt-stack-lg">
+<button class="w-full h-16 rounded-lg bg-gradient-to-r from-primary to-[#8b72d1] text-white font-title-md shadow-[0px_10px_30px_rgba(103,75,181,0.3)] hover:shadow-[0px_15px_40px_rgba(103,75,181,0.4)] transition-all active:scale-95 group overflow-hidden relative" type="submit">
+<span class="relative z-10 flex items-center justify-center gap-2">
+                        Complete Profile
+                        <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</span>
+<div class="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</button>
+<p class="text-center mt-stack-md text-on-surface-variant font-body-sm">
+                    By completing, you agree to our <a class="text-primary font-medium underline underline-offset-4" href="#">Fashion Data Policy</a>.
+                </p>
+</div>
+</form>
+</main>
+<!-- Footer Identity (Non-Navigational) -->
+<footer class="w-full max-w-2xl px-container-padding-mobile pb-12 opacity-50 text-center">
+<p class="font-label-caps text-label-caps text-outline">WardrobeWise AI v2.4 • Styled for You</p>
+</footer>
+<script>
+        // Micro-interactions for buttons
+        document.querySelectorAll('button[type="button"]').forEach(btn => {
+            btn.addEventListener('click', function() {
+                // If it's a sibling group (like Gender)
+                if(this.parentElement.classList.contains('flex')) {
+                    Array.from(this.parentElement.children).forEach(s => {
+                        s.classList.remove('border-primary', 'bg-primary/5');
+                        s.classList.add('border-transparent', 'bg-surface-container-low');
+                    });
+                    this.classList.remove('border-transparent', 'bg-surface-container-low');
+                    this.classList.add('border-primary', 'bg-primary/5');
+                }
+            });
+        });
+
+        // Form submission animation
+        document.getElementById('registrationForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            btn.innerHTML = '<span class="material-symbols-outlined animate-spin" data-icon="progress_activity">progress_activity</span>';
+            
+            setTimeout(() => {
+                btn.innerHTML = '<span class="material-symbols-outlined" data-icon="check_circle">check_circle</span> Profile Ready';
+                btn.classList.replace('from-primary', 'from-emerald-500');
+                btn.classList.replace('to-[#8b72d1]', 'to-emerald-400');
+                btn.style.boxShadow = '0px 10px 30px rgba(16, 185, 129, 0.3)';
+            }, 1500);
+        });
+
+        // Parallax effect on sections
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            sections.forEach((section, index) => {
+                const speed = 0.05 * (index + 1);
+                const rect = section.getBoundingClientRect();
+                if(rect.top < window.innerHeight && rect.bottom > 0) {
+                    section.style.transform = `translateY(${(rect.top - window.innerHeight/2) * speed}px)`;
+                }
+            });
+        });
+    </script>
+</body></html>
