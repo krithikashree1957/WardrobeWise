@@ -1,32 +1,53 @@
-# WardrobeWise — AI Fashion Studio
+# 👗 WardrobeWise
 
-An AI-powered Smart Virtual Wardrobe and Personal Fashion Assistant. Digitize your closet, get AI-detected clothing attributes, generate outfits based on mood/occasion/weather/color theory, preview looks on a virtual avatar, chat with an AI stylist, manage laundry, pack for trips, evaluate potential purchases, and track wardrobe sustainability.
+**An AI-powered virtual wardrobe and personal fashion assistant, built as a full-stack MERN + TypeScript application.**
 
-The UI is a pixel-accurate implementation of the **"Lumina Editorial"** design system exported from Stitch (glassmorphism, lavender/sky-blue palette, Inter typeface, 24px card radii). Four screens (Splash, Login, Registration, Dashboard) were provided as source-of-truth exports and were ported line-for-line; every additional screen this feature set requires (Wardrobe, Outfit Generator, Assistant, Profile, Avatar, Laundry, Packing, Shopping, Sustainability, Statistics, Search) extends the exact same design tokens, spacing scale, and component patterns for visual consistency.
+WardrobeWise lets users digitize their closet, get AI-generated clothing attributes from a single photo, and receive outfit recommendations driven by mood, occasion, live weather, and color theory. Beyond styling, it functions as a practical wardrobe management system — tracking laundry status, cost-per-wear, packing lists for trips, and a sustainability dashboard that surfaces underused items.
 
----
-
-## 1. Tech Stack
-
-| Layer | Technology |
-|---|---|
-| Frontend | React 19, Vite, TypeScript, Tailwind CSS, React Router, React Hook Form, Axios |
-| Backend | Node.js, Express.js, TypeScript |
-| Database | MongoDB + Mongoose |
-| Auth | JWT (access + refresh), bcrypt, Google Sign-In |
-| Image Storage | Cloudinary |
-| AI | Google Gemini API (vision + chat) |
-| Weather | OpenWeather API |
-| State | React Context API |
-| Validation | Zod |
-| Charts | Recharts |
-| Animations | Framer Motion / native CSS keyframes ported from Stitch |
-| Icons | Material Symbols (Google Fonts) — matches the Stitch exports exactly |
-| Notifications | Sonner |
+The UI is a pixel-accurate implementation of a design system exported from Stitch (glassmorphism cards, a lavender/sky-blue palette, and the Inter typeface). Four core screens were ported directly from that export; every additional screen extends the same design tokens and component patterns for full visual consistency across the app.
 
 ---
 
-## 2. Folder Structure
+## ✨ Features
+
+- **AI Clothing Detection** — upload a photo and Gemini Vision extracts type, fabric, color, pattern, and formality automatically
+- **Smart Outfit Generation** — rule-based selection engine scored against comfort, weather suitability, and color harmony, with AI-generated reasoning
+- **Color Theory Engine** — computes complementary, analogous, triadic, monochromatic, and split-complementary palettes from any base color
+- **Weather-Aware Recommendations** — pulls live conditions via OpenWeather and suggests fabrics, layers, and footwear accordingly
+- **Conversational AI Stylist** — a Gemini-backed chat assistant with wardrobe and weather context baked into every response
+- **Virtual Avatar Studio** — customizable hair, skin tone, height, and body shape, with an architecture pre-wired for a future Ready Player Me integration
+- **Laundry Manager** — track items across clean / worn-once / needs-washing / ironed states
+- **Packing Assistant** — generates a weather-adjusted packing checklist from a destination and trip length
+- **Shopping Assistant** — evaluates a potential purchase against your existing wardrobe before you buy
+- **Sustainability Dashboard** — cost-per-wear, most/least-used items, and donation suggestions for unworn pieces
+- **Wardrobe Statistics** — usage trends, favorite colors/brands, and most/least-worn items visualized with Recharts
+- **Full Authentication** — email/password with JWT (access + refresh tokens), plus Google Sign-In
+
+---
+
+## 🛠 Tech Stack
+
+**Frontend**
+React 19 · Vite · TypeScript · Tailwind CSS · React Router · React Hook Form · Axios · Recharts · Sonner
+
+**Backend**
+Node.js · Express.js · TypeScript
+
+**Database**
+MongoDB · Mongoose
+
+**AI & APIs**
+Google Gemini API (vision + chat) · OpenWeather API
+
+**Authentication**
+JWT (access + refresh tokens) · bcrypt · Google Sign-In
+
+**Libraries & Tools**
+Zod (validation) · Cloudinary SDK (image storage) · Multer (uploads) · Helmet · express-rate-limit · Material Symbols
+
+---
+
+## 📂 Project Structure
 
 ```
 wardrobewise/
@@ -59,7 +80,7 @@ wardrobewise/
 │   │   ├── types/           # shared TS types (mirrors backend models)
 │   │   ├── App.tsx
 │   │   └── main.tsx
-│   ├── tailwind.config.js   # exact Lumina Editorial design tokens
+│   ├── tailwind.config.js   # design system tokens
 │   ├── index.html
 │   └── package.json
 ├── package.json             # root convenience scripts
@@ -68,80 +89,139 @@ wardrobewise/
 
 ---
 
-## 3. Getting Started
+## 🚀 Installation
 
-### Prerequisites
-- Node.js 18+ and npm
-- A MongoDB instance (local or Atlas)
-- (Optional but recommended) API keys for Gemini, OpenWeather, Cloudinary, Google OAuth — see §5. The app runs without them using safe stub fallbacks, but AI detection, weather, and image upload need real keys to work end-to-end.
-
-### Install
+**1. Clone the repository**
 ```bash
-# from the repo root
+git clone https://github.com/krithikashree1957/wardrobewise.git
+cd wardrobewise
+```
+
+**2. Install dependencies**
+```bash
 npm run install:all
 ```
 
-### Configure environment variables
+**3. Create your environment file**
 ```bash
 cp backend/.env.example backend/.env
-# edit backend/.env with your MongoDB URI and API keys
 ```
-The frontend needs no `.env` — it proxies `/api` to `http://localhost:5000` in dev (see `frontend/vite.config.ts`).
 
-### Seed demo data (optional but recommended)
+**4. Configure environment variables**
+
+Open `backend/.env` and fill in your values — see the [Environment Variables](#-environment-variables) section below for the full list.
+
+**5. (Optional) Seed demo data**
 ```bash
 npm run seed
 ```
-This creates a demo user with a starter wardrobe and one saved outfit:
+Creates a demo account with a starter wardrobe:
 ```
 email:    demo@wardrobewise.app
 password: Password123!
 ```
 
-### Run in development
+**6. Run the app**
 ```bash
 npm run dev
 ```
-This runs the backend (port 5000) and frontend (port 5173) concurrently. Visit **http://localhost:5173**.
+Runs both servers concurrently:
+- Backend → `http://localhost:5000`
+- Frontend → `http://localhost:5173`
 
-Alternatively run them separately:
+Or run them separately:
 ```bash
 npm run dev:backend
 npm run dev:frontend
 ```
 
-### Build for production
-```bash
-npm run build
-# backend -> backend/dist
-# frontend -> frontend/dist (serve as static files behind any web server / CDN)
-```
+---
+
+## 🔐 Environment Variables
+
+| Variable | Description |
+|---|---|
+| `PORT` | Backend server port (default `5000`) |
+| `NODE_ENV` | `development` or `production` |
+| `CLIENT_URL` | Frontend origin, used for CORS |
+| `MONGODB_URI` | MongoDB connection string (local or Atlas) |
+| `JWT_SECRET` / `JWT_REFRESH_SECRET` | Secrets for signing access/refresh tokens |
+| `JWT_EXPIRES_IN` / `JWT_REFRESH_EXPIRES_IN` | Token lifetimes |
+| `GOOGLE_CLIENT_ID` | OAuth Client ID, required only for Google Sign-In |
+| `GEMINI_API_KEY` | Google Gemini API key |
+| `GEMINI_MODEL` | Model name, e.g. `gemini-flash-latest` |
+| `OPENWEATHER_API_KEY` | OpenWeather API key |
+| `CLOUDINARY_CLOUD_NAME` / `CLOUDINARY_API_KEY` / `CLOUDINARY_API_SECRET` | Cloudinary credentials for image storage |
+| `RATE_LIMIT_WINDOW_MS` / `RATE_LIMIT_MAX` | API rate limiting configuration |
+
+The full template lives in `backend/.env.example`.
+
+> **⚠️ `.env` must never be committed to GitHub.** It's already listed in `.gitignore`. If `GEMINI_API_KEY`, `OPENWEATHER_API_KEY`, or Cloudinary credentials are left unset, those specific features fall back to clearly-labeled stub data rather than crashing the app.
 
 ---
 
-## 4. API Overview
+## 📡 API Overview
 
 Base URL: `http://localhost:5000/api/v1`
 
-| Domain | Routes |
-|---|---|
-| Auth | `POST /auth/register`, `POST /auth/login`, `POST /auth/google`, `POST /auth/forgot-password`, `POST /auth/reset-password`, `GET /auth/me` |
-| Profile | `PATCH /profile`, `GET/PATCH /profile/avatar` |
-| Wardrobe | `POST /wardrobe/detect` (AI detection), `POST /wardrobe`, `GET /wardrobe`, `GET/PATCH/DELETE /wardrobe/:id`, `PATCH /wardrobe/:id/laundry`, `PATCH /wardrobe/:id/favorite`, `PATCH /wardrobe/:id/worn` |
-| Outfits | `POST /outfits/generate`, `GET /outfits`, `GET /outfits/:id`, `PATCH /outfits/:id/save`, `PATCH /outfits/:id/worn`, `DELETE /outfits/:id` |
-| Colors | `GET /colors/scheme?color=674bb5&scheme=analogous`, `GET /colors/schemes?color=674bb5` |
-| Weather | `GET /weather?city=London` |
-| Assistant | `POST /assistant/chat`, `GET /assistant/history` |
-| Laundry | `GET /laundry` |
-| Packing | `POST /packing`, `GET /packing`, `PATCH /packing/:id/items/:itemId/toggle` |
-| Shopping | `POST /shopping/evaluate`, `GET /shopping` |
-| Analytics | `GET /analytics/statistics`, `GET /analytics/sustainability` |
-| Dashboard | `GET /dashboard` |
+All routes require `Authorization: Bearer <accessToken>` **except** `/auth/*`, `/colors/*`, and `/weather`.
 
-All routes except `/auth/*` and `/colors/*` and `/weather` require `Authorization: Bearer <accessToken>`.
+### Auth
+| Method | Endpoint | Description |
+|---|---|---|
+| POST | `/auth/register` | Create an account |
+| POST | `/auth/login` | Email/password login |
+| POST | `/auth/google` | Google Sign-In |
+| POST | `/auth/forgot-password` | Request a password reset |
+| POST | `/auth/reset-password` | Complete a password reset |
+| GET | `/auth/me` | Get the current authenticated user |
 
-### Example: Generate an outfit
-```
+### Profile
+| Method | Endpoint | Description |
+|---|---|---|
+| PATCH | `/profile` | Update profile fields |
+| GET / PATCH | `/profile/avatar` | Get or update virtual avatar |
+
+### Wardrobe
+| Method | Endpoint | Description |
+|---|---|---|
+| POST | `/wardrobe/detect` | AI attribute detection from an uploaded image |
+| POST | `/wardrobe` | Add a new item |
+| GET | `/wardrobe` | List items (supports filters) |
+| GET / PATCH / DELETE | `/wardrobe/:id` | Get, update, or delete an item |
+| PATCH | `/wardrobe/:id/laundry` | Update laundry status |
+| PATCH | `/wardrobe/:id/favorite` | Toggle favorite |
+| PATCH | `/wardrobe/:id/worn` | Mark as worn today |
+
+### Outfits
+| Method | Endpoint | Description |
+|---|---|---|
+| POST | `/outfits/generate` | Generate an AI-scored outfit |
+| GET | `/outfits` | List saved/generated outfits |
+| GET | `/outfits/:id` | Get a single outfit |
+| PATCH | `/outfits/:id/save` | Save an outfit |
+| PATCH | `/outfits/:id/worn` | Mark an outfit as worn |
+| DELETE | `/outfits/:id` | Delete an outfit |
+
+### Other domains
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | `/colors/scheme?color=674bb5&scheme=analogous` | Generate a single color scheme |
+| GET | `/colors/schemes?color=674bb5` | Generate all color schemes for a base color |
+| GET | `/weather?city=London` | Current weather + styling recommendations |
+| POST | `/assistant/chat` | Send a message to the AI stylist |
+| GET | `/assistant/history` | Get chat history |
+| GET | `/laundry` | Laundry overview across all statuses |
+| POST / GET | `/packing` | Create or list packing checklists |
+| PATCH | `/packing/:id/items/:itemId/toggle` | Toggle a packed item |
+| POST | `/shopping/evaluate` | Evaluate a potential purchase against your wardrobe |
+| GET | `/shopping` | List past shopping evaluations |
+| GET | `/analytics/statistics` | Wardrobe statistics |
+| GET | `/analytics/sustainability` | Sustainability dashboard |
+| GET | `/dashboard` | Aggregated home dashboard data |
+
+### Example — Generate an outfit
+```http
 POST /api/v1/outfits/generate
 Authorization: Bearer <token>
 Content-Type: application/json
@@ -156,7 +236,7 @@ Content-Type: application/json
     "outfit": {
       "_id": "...",
       "name": "AI Generated Outfit",
-      "top": { "_id": "...", "color": "black", "category": "top", "imageUrl": "..." },
+      "top": { "_id": "...", "color": "black", "category": "top" },
       "bottom": { "_id": "...", "color": "indigo", "category": "jeans" },
       "shoes": { "_id": "...", "color": "white", "category": "shoes" },
       "confidenceScore": 88,
@@ -175,99 +255,141 @@ Content-Type: application/json
 
 ---
 
-## 5. Environment Variables
+## 🔒 Security Features
 
-See `backend/.env.example` for the full list. Never commit real secrets.
+- **JWT Authentication** — short-lived access tokens + long-lived refresh tokens
+- **Password Hashing** — bcrypt with 12 salt rounds
+- **Helmet** — secure HTTP headers by default
+- **Rate Limiting** — `express-rate-limit` on all `/api` routes, with a stricter limiter on `/auth/*`
+- **Input Validation** — Zod schemas on every mutating request
+- **Protected Routes** — `requireAuth` middleware enforced on all non-public endpoints
+- **Cloudinary Uploads** — images streamed directly to Cloudinary, never written to disk
+- **Environment Variables** — no secrets hardcoded; everything flows through a single validated config module
 
+---
+
+## 🧪 Testing
+
+No automated test suite is included yet. The codebase is structured to make adding one straightforward: controllers are thin and delegate to pure `services/*` functions (outfit generation, color theory, packing logic, shopping evaluation) that are natural targets for unit tests, while frontend components consume typed service wrappers that are easy to mock in React Testing Library.
+
+**Recommended next step:** Jest or Vitest for services, `supertest` for API route tests, and React Testing Library for component tests.
+
+### Manual testing checklist
+
+| Area | Steps | Expected result |
+|---|---|---|
+| **Authentication** | Register → log out → log in with the same credentials | Account persists; JWT issued; redirected to Dashboard |
+| **Wardrobe CRUD** | Add an item with an image → edit a field → delete it | Item appears, updates, and is removed correctly |
+| **AI Detection** | Upload a clothing photo on the Add Item screen | Category, color, fabric, and pattern are pre-filled for review |
+| **Outfit Generation** | Select a mood/occasion → Generate | Returns an outfit with confidence score and reasoning |
+| **Weather Recommendation** | Load the Dashboard | Shows live temperature and condition-based styling tips |
+| **Avatar** | Change hair, skin tone, height, or body shape | Preview updates and persists on reload |
+| **Packing Planner** | Enter a destination and trip length | Returns a weather-adjusted checklist with toggleable items |
+
+---
+
+## 🚀 Deployment
+
+**Backend** — any Node host (Render, Railway, Fly.io, EC2, etc.)
+```bash
+npm install --prefix backend
+npm run build --prefix backend
+node backend/dist/index.js
 ```
-PORT, NODE_ENV, CLIENT_URL
-MONGODB_URI
-JWT_SECRET, JWT_EXPIRES_IN, JWT_REFRESH_SECRET, JWT_REFRESH_EXPIRES_IN
-GOOGLE_CLIENT_ID
-GEMINI_API_KEY, GEMINI_MODEL
-OPENWEATHER_API_KEY
-CLOUDINARY_CLOUD_NAME, CLOUDINARY_API_KEY, CLOUDINARY_API_SECRET
-RATE_LIMIT_WINDOW_MS, RATE_LIMIT_MAX
+Set all variables from `.env.example` in your host's environment config, and point `CLIENT_URL` at your deployed frontend origin.
+
+**Frontend** — Vercel, Netlify, Cloudflare Pages, or any static host
+```bash
+npm install --prefix frontend
+npm run build --prefix frontend
+```
+Deploy the `frontend/dist` folder, and configure your host to proxy `/api/*` to the backend (or set an absolute API base URL in `frontend/src/lib/axios.ts`).
+
+**MongoDB Atlas** — create a free cluster, whitelist your deployment host's IP (or `0.0.0.0/0` for early-stage projects), and set `MONGODB_URI` accordingly.
+
+**Cloudinary** — works identically in production; no code changes required, just valid credentials.
+
+---
+
+## 🔧 Troubleshooting
+
+**`MongoNetworkError` / `querySrv ECONNREFUSED ...mongodb.net`**
+- IP not whitelisted — add it under Atlas → Network Access.
+- Some networks (notably university/corporate Wi-Fi) block DNS SRV lookups entirely. Fix: in Atlas → Connect → Drivers, toggle **off** "SRV Connection String" to get a standard `mongodb://` URI with explicit hostnames.
+- Free-tier clusters auto-pause after inactivity — resume it from the Atlas dashboard.
+- Always fully restart (`Ctrl+C` → `npm run dev`) after editing `.env` — variables only load at process startup.
+
+**`Gemini API error (404): ... is not found for API version v1beta`**
+Google frequently retires specific model versions ahead of their published shutdown dates. Use the rolling alias instead of a pinned version:
+```
+GEMINI_MODEL=gemini-flash-latest
+```
+To check which models your key currently supports:
+```bash
+curl "https://generativelanguage.googleapis.com/v1beta/models?key=YOUR_KEY"
 ```
 
-**Graceful degradation:** if `GEMINI_API_KEY`, `OPENWEATHER_API_KEY`, or Cloudinary keys are missing, the corresponding services return clearly-labeled stub data instead of crashing, so the rest of the app (auth, CRUD, statistics, etc.) stays usable while you wire up keys.
+**`Invalid cloud_name used for ...` (Cloudinary)**
+`CLOUDINARY_CLOUD_NAME` must be the actual Cloud Name from your Cloudinary dashboard (a short slug, not a project name).
+
+**`400 Validation failed` on `POST /wardrobe`**
+Inspect `details.fieldErrors` in the response body (DevTools → Network tab) to see which field failed. Common causes already handled in this codebase:
+- `price` arrives as a string from multipart form data — coerced automatically via `z.coerce.number()`.
+- `season` / `occasion` arrive as a plain string (not an array) when only one value is selected — normalized automatically before validation.
+- An AI-detected `category` (e.g. `"sweater"`) not matching the 12-value enum — mapped via `CATEGORY_SYNONYMS` in `frontend/src/pages/AddItem.tsx`.
+
+**Login/register intermittently failing with 500**
+Check `backend/.env` line-by-line for a missing newline between variables — this can silently merge two values into one and corrupt both.
+
+**General tip:** the line directly above any `POST ... 500 ...` summary in the backend terminal — `[unhandled error] ...` — contains the real exception and is the fastest way to diagnose any of the above.
 
 ---
 
-## 6. Security
+## 🎨 Design System
 
-- Passwords hashed with bcrypt (12 rounds).
-- JWT access + refresh tokens; access token required on all protected routes via `requireAuth` middleware.
-- `express-rate-limit` on all `/api` routes, with a stricter limiter on `/auth/*`.
-- Zod validation on every mutating request body.
-- `helmet` for secure HTTP headers, CORS locked to `CLIENT_URL`.
-- File uploads restricted to images, 8MB limit, streamed directly to Cloudinary (never written to disk).
-- No secrets hardcoded — everything flows through `backend/src/config/env.ts`.
+The UI follows a design system exported from Stitch — a lavender/sky-blue glassmorphism aesthetic built on the Inter typeface. Color tokens, spacing scale, border radii, and typography are reproduced verbatim in `frontend/tailwind.config.js`, and the core visual components (`glass-surface`, `glass-panel`, gradient buttons, pill chips) are shared across every screen to keep the app visually consistent end to end.
 
 ---
 
-## 7. Design System Fidelity
+## 🧍 Future Avatar Integration
 
-Source: Stitch project **"WardrobeWise AI Fashion Studio"** (Lumina Editorial design system), screens: Splash, Login, User Registration, Dashboard, plus the logo mark.
-
-- `frontend/tailwind.config.js` reproduces the exported color tokens, border radii, spacing scale, and type scale **verbatim** (e.g. `primary: #674bb5`, `rounded-lg: 2rem`, `stack-lg: 32px`, `headline-lg: 32px/40px/700`).
-- `.glass-surface` / `.glass-panel` / `.lavender-gradient` / `.bg-mesh` utility classes are ported from the exported `<style>` blocks exactly (same blur radii, opacity, shadow values).
-- Splash, Login, Register, and Dashboard pages reproduce the exported markup structure, copy, spacing, and micro-interactions (mood-selector toggle, animated gradient background, cursor-follow glow, shine-sweep CTA).
-- All additional screens (Wardrobe, Outfit Generator, Assistant, Profile, Avatar, Laundry, Packing, Shopping, Sustainability, Statistics, Search) reuse the same `glass-surface` cards, pill chips, Material Symbols icon set, and top/bottom nav bars for full consistency, since Stitch source designs weren't provided for those screens.
+The `Avatar` model is deliberately structured to support a future upgrade path: in-house customization fields (hair, skin tone, height, body shape) are kept separate from a reserved `provider` field plus `externalAvatarId` / `externalAvatarUrl`. The current avatar renders as a lightweight in-house SVG preview; swapping it for a full **Ready Player Me** 3D avatar later only requires branching on `avatar.provider` in the frontend — no schema or API changes needed.
 
 ---
 
-## 8. Virtual Avatar — Future Ready Player Me Integration
+## 📈 Future Enhancements
 
-The `Avatar` model (`backend/src/models/Avatar.ts`) intentionally separates the in-house customization fields (hair, skin tone, height, body shape) from a reserved `provider` + `externalAvatarId` / `externalAvatarUrl` pair. The frontend `AvatarStudio` page renders a simplified SVG preview today; swapping it for a Ready Player Me iframe/3D viewer later only requires branching on `avatar.provider` — no schema or API changes needed.
-
----
-
-## 9. Testing Instructions
-
-No automated test suite is included yet (out of scope for this pass), but the app is structured for easy testing:
-
-- **Backend**: controllers are thin and call pure `services/*` functions (outfit generation, color theory, packing checklist, shopping evaluation) — these are ideal unit test targets (e.g. with Jest/Vitest + `supertest` for route-level tests).
-- **Frontend**: components consume typed service wrappers (`src/services/*`) that can be mocked in React Testing Library tests.
-
-Manual smoke test checklist:
-1. `npm run seed`, then `npm run dev`.
-2. Visit `/`, click **Get Started** → Login with `demo@wardrobewise.app` / `Password123!`.
-3. Dashboard should show weather, the seeded outfit, wardrobe stats, and recently-worn items.
-4. Wardrobe → confirm 6 seeded items render with filters/search working.
-5. Add Item → upload any image → (with `GEMINI_API_KEY` set) confirm AI-detected fields populate; save → item appears in Wardrobe.
-6. Outfits → Generate → confirm a new outfit card appears with confidence score + reasoning.
-7. Assistant → send "What should I wear today?" → confirm a reply appears (stub or real, depending on `GEMINI_API_KEY`).
-8. Laundry / Packing / Shopping / Sustainability / Statistics / Search → confirm each loads without errors.
+- [ ] Automated test suite (Jest/Vitest + Supertest + React Testing Library)
+- [ ] Transactional email integration for password reset (Resend/SendGrid)
+- [ ] Ready Player Me 3D avatar integration
+- [ ] CI/CD pipeline (GitHub Actions) for lint, build, and test on every PR
+- [ ] Push notifications for laundry reminders and packing checklists
+- [ ] Social/sharing features for outfits
 
 ---
 
-## 10. Deployment Guide
+## 🤝 Contributing
 
-**Backend** (any Node host — Render, Railway, Fly.io, EC2, etc.):
-1. Set all env vars from `.env.example` in your host's dashboard.
-2. `npm install --prefix backend && npm run build --prefix backend`
-3. Start with `node backend/dist/index.js` (or `npm start --prefix backend`).
-4. Point `CLIENT_URL` at your deployed frontend origin for CORS.
+Contributions are welcome. To propose a change:
 
-**Frontend** (Vercel, Netlify, Cloudflare Pages, or any static host):
-1. `npm install --prefix frontend && npm run build --prefix frontend`
-2. Deploy the `frontend/dist` folder.
-3. Configure your host to proxy/rewrite `/api/*` to your backend URL (or set an absolute API base URL in `frontend/src/lib/axios.ts` if not using a proxy).
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/your-feature-name`
+3. Commit your changes: `git commit -m "Add: your feature description"`
+4. Push to your fork: `git push origin feature/your-feature-name`
+5. Open a Pull Request describing your change
 
-**Database**: use MongoDB Atlas for production; set `MONGODB_URI` accordingly.
-
-**Images**: Cloudinary works identically in prod — no code changes needed, just valid credentials.
+This project welcomes improvements, bug fixes, and documentation updates — please keep new code consistent with the existing structure and TypeScript conventions.
 
 ---
 
-## 11. Known Scope Notes
+## 📜 License
 
-This is a comprehensive, runnable full-stack scaffold covering every feature area requested. A few areas are intentionally implemented as solid, extensible foundations rather than exhaustive production systems, clearly marked in code comments:
-- **Email delivery** for password reset is stubbed (the reset token is logged/returned in dev mode) — wire up a provider like Resend or SendGrid in `authController.forgotPassword`.
-- **Virtual Avatar** renders as a simplified in-house SVG today; the data model is ready for a Ready Player Me swap (see §8).
-- **AI outfit selection** is deterministic/rule-based (fast, free, reliable); Gemini is used specifically for natural-language reasoning and image attribute detection, keeping core UX functional even without an API key.
+This project was built for educational and research purposes.
 
 ---
 
-Built with the **Lumina Editorial** design system. Styled for you. 💜
+## 👩‍💻 Author
+
+**Krithika Shree K**
+M.Tech Integrated Software Engineering — VIT Vellore
+GitHub: [@krithikashree1957](https://github.com/krithikashree1957)
