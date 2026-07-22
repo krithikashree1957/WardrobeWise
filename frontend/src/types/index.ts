@@ -146,6 +146,26 @@ export interface ShoppingSuggestion {
   createdAt: string;
 }
 
+export interface MarketplaceProduct {
+  id: string;
+  name: string;
+  category: ClothingCategory;
+  color: string;
+  price: number;
+  imageUrl: string;
+  store: 'Amazon' | 'Myntra' | 'Flipkart';
+  buyUrl: string;
+  occasion: Occasion[];
+  season: Season[];
+  matchScore: number;
+}
+
+export interface MarketplaceRecommendation {
+  category: ClothingCategory;
+  reason: string;
+  products: MarketplaceProduct[];
+}
+
 export interface WardrobeStatistics {
   totalClothes: number;
   favoriteColor: string | null;

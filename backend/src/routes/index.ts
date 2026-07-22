@@ -11,6 +11,7 @@ import packingRoutes from './packingRoutes';
 import shoppingRoutes from './shoppingRoutes';
 import analyticsRoutes from './analyticsRoutes';
 import dashboardRoutes from './dashboardRoutes';
+import marketplaceRoutes from './marketplaceRoutes';
 
 const router = Router();
 
@@ -26,5 +27,6 @@ router.use('/packing', packingRoutes);
 router.use('/shopping', shoppingRoutes);
 router.use('/analytics', analyticsRoutes);
 router.use('/dashboard', dashboardRoutes);
+router.use('/marketplace', marketplaceRoutes);
 
 export default router;

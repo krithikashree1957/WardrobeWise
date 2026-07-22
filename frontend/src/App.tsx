@@ -19,6 +19,7 @@ import AvatarStudio from './pages/AvatarStudio';
 import Laundry from './pages/Laundry';
 import Packing from './pages/Packing';
 import Shopping from './pages/Shopping';
+import Marketplace from './pages/Marketplace';
 import Sustainability from './pages/Sustainability';
 import Statistics from './pages/Statistics';
 import Search from './pages/Search';
@@ -47,6 +48,7 @@ export default function App() {
           <Route path="/laundry" element={<ProtectedRoute><Laundry /></ProtectedRoute>} />
           <Route path="/packing" element={<ProtectedRoute><Packing /></ProtectedRoute>} />
           <Route path="/shopping" element={<ProtectedRoute><Shopping /></ProtectedRoute>} />
+          <Route path="/marketplace" element={<ProtectedRoute><Marketplace /></ProtectedRoute>} />
           <Route path="/sustainability" element={<ProtectedRoute><Sustainability /></ProtectedRoute>} />
           <Route path="/statistics" element={<ProtectedRoute><Statistics /></ProtectedRoute>} />
           <Route path="/search" element={<ProtectedRoute><Search /></ProtectedRoute>} />

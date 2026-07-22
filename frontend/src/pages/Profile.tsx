@@ -18,6 +18,7 @@ const NAV_LINKS = [
   { to: '/laundry', icon: 'local_laundry_service', label: 'Laundry Manager' },
   { to: '/packing', icon: 'luggage', label: 'Packing Assistant' },
   { to: '/shopping', icon: 'shopping_bag', label: 'Shopping Assistant' },
+  { to: '/marketplace', icon: 'storefront', label: 'Marketplace Assistant' },
   { to: '/search', icon: 'search', label: 'Search Wardrobe' },
   { to: '/avatar', icon: 'face', label: 'Virtual Avatar' },
 ];
