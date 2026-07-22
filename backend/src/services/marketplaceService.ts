@@ -178,14 +178,20 @@ function scoreProduct(candidate: MarketplaceProduct, ctx: WardrobeContext): numb
 }
 
 /**
- * Builds the full set of marketplace recommendations for a wardrobe:
- * finds the gaps, then scores and ranks catalog products for each gap.
+ * Scores and ranks catalog products for an arbitrary list of wardrobe
+ * gaps. This is the reusable core of the recommendation engine: Feature 1
+ * (Marketplace Assistant) calls it with gaps found via `analyzeWardrobeGaps`,
+ * and Feature 2 (Travel Wardrobe Planner) calls it with gaps derived from a
+ * trip's missing packing-checklist items - both get the same scoring
+ * (neutral-color bonus, wardrobe color/occasion/season coordination) and
+ * the same catalog, so recommendations look and behave consistently
+ * everywhere in the app.
  */
-export function buildMarketplaceRecommendations(
+export function recommendProductsForGaps(
+  gaps: WardrobeGap[],
   wardrobe: IClothingItem[],
   perCategoryLimit = 3
 ): MarketplaceRecommendation[] {
-  const gaps = analyzeWardrobeGaps(wardrobe);
   if (gaps.length === 0) return [];
 
   const ctx = buildWardrobeContext(wardrobe);
@@ -202,4 +208,16 @@ export function buildMarketplaceRecommendations(
       return { category: gap.category, reason: gap.reason, products };
     })
     .filter((rec) => rec.products.length > 0);
+}
+
+/**
+ * Builds the full set of marketplace recommendations for a wardrobe:
+ * finds the gaps, then scores and ranks catalog products for each gap.
+ */
+export function buildMarketplaceRecommendations(
+  wardrobe: IClothingItem[],
+  perCategoryLimit = 3
+): MarketplaceRecommendation[] {
+  const gaps = analyzeWardrobeGaps(wardrobe);
+  return recommendProductsForGaps(gaps, wardrobe, perCategoryLimit);
 }

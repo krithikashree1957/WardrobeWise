@@ -166,6 +166,44 @@ export interface MarketplaceRecommendation {
   products: MarketplaceProduct[];
 }
 
+export interface TravelChecklistItem {
+  label: string;
+  category: ClothingCategory;
+  available: boolean;
+  matchedItem?: ClothingItem;
+}
+
+export type TravelOutfitSlotName = 'morning' | 'afternoon' | 'evening' | 'night';
+
+export interface TravelOutfitSlot {
+  slot: TravelOutfitSlotName;
+  top?: ClothingItem;
+  bottom?: ClothingItem;
+  shoes?: ClothingItem;
+  outerwear?: ClothingItem;
+  accessories: ClothingItem[];
+  note: string;
+}
+
+export interface TravelDayPlan {
+  day: number;
+  slots: TravelOutfitSlot[];
+}
+
+export interface TravelPlan {
+  _id: string;
+  destination: string;
+  country: string;
+  state?: string;
+  days: number;
+  travelMonth: string;
+  purpose: string;
+  expectedWeather?: { tempC?: number; condition?: string; description?: string };
+  checklist: TravelChecklistItem[];
+  dailyPlans: TravelDayPlan[];
+  createdAt: string;
+}
+
 export interface WardrobeStatistics {
   totalClothes: number;
   favoriteColor: string | null;

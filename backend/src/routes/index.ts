@@ -12,6 +12,7 @@ import shoppingRoutes from './shoppingRoutes';
 import analyticsRoutes from './analyticsRoutes';
 import dashboardRoutes from './dashboardRoutes';
 import marketplaceRoutes from './marketplaceRoutes';
+import travelPlannerRoutes from './travelPlannerRoutes';
 
 const router = Router();
 
@@ -28,5 +29,6 @@ router.use('/shopping', shoppingRoutes);
 router.use('/analytics', analyticsRoutes);
 router.use('/dashboard', dashboardRoutes);
 router.use('/marketplace', marketplaceRoutes);
+router.use('/travel-planner', travelPlannerRoutes);
 
 export default router;

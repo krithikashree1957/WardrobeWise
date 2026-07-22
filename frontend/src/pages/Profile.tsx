@@ -19,6 +19,7 @@ const NAV_LINKS = [
   { to: '/packing', icon: 'luggage', label: 'Packing Assistant' },
   { to: '/shopping', icon: 'shopping_bag', label: 'Shopping Assistant' },
   { to: '/marketplace', icon: 'storefront', label: 'Marketplace Assistant' },
+  { to: '/travel-planner', icon: 'travel_explore', label: 'Travel Wardrobe Planner' },
   { to: '/search', icon: 'search', label: 'Search Wardrobe' },
   { to: '/avatar', icon: 'face', label: 'Virtual Avatar' },
 ];
