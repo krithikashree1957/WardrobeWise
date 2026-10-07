@@ -8,3 +8,5 @@ build/
 tsconfig.tsbuildinfo
 coverage/
 playwright/.auth/
+frontend/playwright/.auth/
+frontend/test-results/
